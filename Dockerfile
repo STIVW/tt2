@@ -13,7 +13,9 @@ RUN apt update && \
     dpkg-reconfigure --frontend noninteractive tzdata &&\
     chmod 0644 /etc/cron.d/tt-cron &&\
     crontab /etc/cron.d/tt-cron &&\
-    touch /var/log/cron.log 
+    touch /var/log/cron.log &&\
+    apt-get clean && \
+    apt-get purge -y --auto-remove
 
 
 CMD ["/usr/bin/supervisord"]
